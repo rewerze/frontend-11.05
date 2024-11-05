@@ -1,0 +1,59 @@
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    text-align: center;
+}
+
+.keret {
+    border: 2px solid black;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.keret h1 {
+    font-weight: lighter;
+}
+
+.nyilak button {
+    width: 5rem;
+    height: 5rem;
+    font-size: 2rem;
+    margin: 3px;
+    border: 1px solid rgb(134, 134, 134);
+    border-radius: 5px;
+}
+
+.nyilak {
+    margin-bottom: 3rem;
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.gombok button {
+    border-radius: 20px;
+    border: none;
+    width: 5rem;
+    height: 2rem;
+    margin: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.start {
+    background-color: green;
+}
+
+.start:hover {
+    transition: 200ms;
+    background-color: greenyellow;
+}
+
+.stop {
+    background-color: red;
+}
+
+.stop:hover {
+    transition: 200ms;
+    background-color: rgb(253, 67, 67);
+}
