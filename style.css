@@ -1,43 +1,50 @@
-.center {
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-    text-align: center;
+#app {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 600px;
 }
 
 .keret {
     border: 2px solid black;
     margin-top: 5rem;
     margin-bottom: 5rem;
-}
-
-.keret h1 {
-    font-weight: lighter;
+    padding: 10px;
+    width: 40%;
+    text-align: center;
+    font-size: 1.5rem;
 }
 
 .nyilak button {
     width: 5rem;
     height: 5rem;
     font-size: 2rem;
-    margin: 3px;
     border: 1px solid rgb(134, 134, 134);
     border-radius: 5px;
 }
 
 .nyilak {
+    display: grid;
     margin-bottom: 3rem;
-    display: inline-flex;
-    flex-direction: row;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+    ". up ."
+    "left down right";
+    gap: 5px;
 }
 
 .gombok button {
     border-radius: 20px;
     border: none;
-    width: 5rem;
-    height: 2rem;
+    width: fit-content;
+    height: fit-content;
     margin: 5px;
     color: white;
     cursor: pointer;
+    font-size: 2rem;
+    padding: 0.5rem;
 }
 
 .start {
@@ -57,3 +64,8 @@
     transition: 200ms;
     background-color: rgb(253, 67, 67);
 }
+
+#arrow-up { grid-area: up; }
+#arrow-left { grid-area: left; }
+#arrow-down { grid-area: down; }
+#arrow-right { grid-area: right; }
