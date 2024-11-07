@@ -20,28 +20,28 @@ document.addEventListener('keydown', (e) => {
             case "ArrowUp":
                 if (on) {
                     document.getElementById("arrow-up").style = "background-color: lightgrey";
-                    Hit("up");
+                    Hit("Up");
                     osszes++;
                 }
                 break;
             case "ArrowLeft":
                 if (on) {
                     document.getElementById("arrow-left").style = "background-color: lightgrey";
-                    Hit("left");
+                    Hit("Left");
                     osszes++;
                 }
                 break;
             case "ArrowDown":
                 if (on) {
                     document.getElementById("arrow-down").style = "background-color: lightgrey";
-                    Hit("down");
+                    Hit("Down");
                     osszes++;
                 }
                 break;
             case "ArrowRight":
                 if (on) {
                     document.getElementById("arrow-right").style = "background-color: lightgrey";
-                    Hit("right");
+                    Hit("Right");
                     osszes++;
                 }
                 break;
@@ -63,7 +63,7 @@ function Start() {
 
 function RandomNumber() {
     random = Math.floor(Math.random() * 4);
-    p = ["up", "left", "down", "right"];
+    p = ["Up", "Left", "Down", "Right"];
     randkey = p[random];
 
     document.getElementById("display").style = "color: black;"
@@ -77,6 +77,7 @@ function RandomNumber() {
 
 
 function Stop() {
+    document.getElementById("timer").innerHTML = (20 - timeleft) + "mp alatt";
     timeleft = 0;
     timer = clearInterval(timer);
     keydown = "";
