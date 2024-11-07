@@ -54,6 +54,8 @@ function Start() {
     pressedGood = 0;
     reactionAvg = 0;
     on = true;
+    timeleft = 0;
+    timer = clearInterval(timer);
 
     Timer();
     RandomNumber();
