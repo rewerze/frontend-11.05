@@ -11,7 +11,7 @@
     padding: 2rem;
     text-align: center;
     font-size: 1.5rem;
-    width: 20rem;
+    width: 30rem;
 }
 
 .arrows button {
@@ -20,6 +20,7 @@
     font-size: 2rem;
     border: 1px solid rgb(134, 134, 134);
     border-radius: 5px;
+    background-color: white;
 }
 
 .arrows {
@@ -68,3 +69,8 @@
 #arrow-left { grid-area: left; }
 #arrow-down { grid-area: down; }
 #arrow-right { grid-area: right; }
+
+#timer {
+    font-size: 2rem;
+    margin: 2rem;
+}

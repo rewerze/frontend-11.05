@@ -1,73 +1,62 @@
 var random;
 var p;
 var keydown;
-var db = 0;
+var osszes = 0;
 var pressedGood = 0;
-var pressedBad = 0;
+var on = false;
+var timer;
+var timeleft;
+var reactionTimer;
+var reactionAvg = 0;
+
+document.addEventListener('keydown', (e) => {
+    switch (e.code) {
+        case "Enter":
+            Start();
+            break;
+        case "Backspace":
+            Stop();
+            break;
+            case "ArrowUp":
+                if (on) {
+                    document.getElementById("arrow-up").style = "background-color: lightgrey";
+                    Hit("up");
+                    osszes++;
+                }
+                break;
+            case "ArrowLeft":
+                if (on) {
+                    document.getElementById("arrow-left").style = "background-color: lightgrey";
+                    Hit("left");
+                    osszes++;
+                }
+                break;
+            case "ArrowDown":
+                if (on) {
+                    document.getElementById("arrow-down").style = "background-color: lightgrey";
+                    Hit("down");
+                    osszes++;
+                }
+                break;
+            case "ArrowRight":
+                if (on) {
+                    document.getElementById("arrow-right").style = "background-color: lightgrey";
+                    Hit("right");
+                    osszes++;
+                }
+                break;
+    }
+});
 
 
 function Start() {
+    osszes = 0;
+    pressedGood = 0;
+    reactionAvg = 0;
+    on = true;
+
+    Timer();
     RandomNumber();
-    document.addEventListener('keydown', (e) => {
-        switch (e.code) {
-            case "ArrowUp":
-                document.getElementById("arrow-up").style = "background-color: lightgrey";
-                if (randkey == "up") {
-                    document.getElementById("display").style = "color: green";
-                    delay(250).then(() => RandomNumber());
-                    pressedGood++;
-                }
-                else {
-                    document.getElementById("display").style = "color: red";
-                    delay(250).then(() => RandomNumber());
-                    pressedBad++;
-                }
-                db = db + 1
-                break;
-            case "ArrowLeft":
-                document.getElementById('arrow-left').style = "background-color: lightgrey";
-                if (randkey == "left") {
-                    document.getElementById("display").style = "color: green";
-                    delay(250).then(() => RandomNumber());
-                    pressedGood++;
-                }
-                else {
-                    document.getElementById("display").style = "color: red";
-                    delay(250).then(() => RandomNumber());
-                    pressedBad++;
-                }
-                db = db + 1
-                break;
-            case "ArrowDown":
-                document.getElementById('arrow-down').style = "background-color: lightgrey";
-                if (randkey == "down") {
-                    document.getElementById("display").style = "color: green";
-                    delay(250).then(() => RandomNumber());
-                    pressedGood++;
-                }
-                else {
-                    document.getElementById("display").style = "color: red";
-                    delay(250).then(() => RandomNumber());
-                    pressedBad++;
-                }
-                db = db + 1
-                break;
-            case "ArrowRight":
-                document.getElementById('arrow-right').style = "background-color: lightgrey";
-                if (randkey == "right") {
-                    document.getElementById("display").style = "color: green";
-                    delay(250).then(() => RandomNumber());
-                    pressedGood++;
-                }
-                else {
-                    document.getElementById("display").style = "color: red";
-                    delay(250).then(() => RandomNumber());
-                    pressedBad++;
-                }
-                db = db + 1
-                break;
-        }
-    });
 }
 
 function RandomNumber() {
@@ -86,10 +75,45 @@ function RandomNumber() {
 
 
 function Stop() {
+    timeleft = 0;
+    timer = clearInterval(timer);
     keydown = "";
-    document.getElementById("display").innerHTML = db + " katt | "+"pontoság: " + pressedGood + " / " + pressedBad;
+    document.getElementById("display").innerHTML = osszes + " katt | "
+    + "pontoság: " + pressedGood + " / " + (osszes - pressedGood)
+    + " | " + "reakció idő: ";
+    on = false;
 }
 
 function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
-  }
+}
+
+function Timer() {
+    timeleft = 20;
+    timer = setInterval(function(){
+    if(timeleft == 0){
+        clearInterval(timer);
+        Stop(); 
+    }
+    document.getElementById("timer").innerHTML = timeleft + "mp van hátra";
+    timeleft -= 1;
+    }, 1000);
+}
+
+function Hit(arrow) {
+    if (randkey == arrow) {
+        document.getElementById("display").style = "color: green";
+        delay(250).then(() => RandomNumber());
+        pressedGood++;
+    }
+    else {
+        document.getElementById("display").style = "color: red";
+        delay(250).then(() => RandomNumber());
+    }
+}
+
+// function ReactionTime() {
+//     reactionTimer = setInterval(function() {
+        
+//     });
+// }
